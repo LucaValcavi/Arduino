@@ -2,9 +2,9 @@
 MorseMunication MORSE = MorseMunication();
 // Arduino pin connected to the TX-module pin
 #define pinTX      12 // it is NOT USED in this example
+// timeDot: value in milliseconds 
 // 25ms is a good value for speed and reliability
-// 25ms in transmission needs about 17ms in reception (12-22)
-// 100ms in transmission needs about 70ms in reception (50-95)
+// the minimum value is 6ms the maximum is 6500ms
 #define timeDot  6 
 // Arduino pin connected to the RX-module pin
 // It can be the pin 2 or 3: only these pins can be connected
