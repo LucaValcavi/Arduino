@@ -4,8 +4,7 @@ MorseMunication MORSE = MorseMunication();
 #define pinTX       12
 // timeDot: value in milliseconds 
 // 25ms is a good value for speed and reliability
-// 25ms in transmission needs about 17ms in reception (12-22)
-// 100ms in transmission needs about 70ms in reception (50-95)
+// the minimum value is 6ms the maximum is 6500ms
 #define timeDot   6
 // example of message
 char buf[]="ABCDE FGHIJ KLMNO PQRST UVWXY Z 12345 67890"; // 43 chars
