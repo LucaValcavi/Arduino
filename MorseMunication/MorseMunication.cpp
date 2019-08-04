@@ -1,4 +1,8 @@
 // MorseMunication.cpp
+//////////////////////////////////////
+// This library is licensed under the
+// GNU General Public License v2.0
+/////////////////////////////////////
 #include "MorseMunication.h"
 //
 uint8_t G_BANKofSIGNS[36]={
