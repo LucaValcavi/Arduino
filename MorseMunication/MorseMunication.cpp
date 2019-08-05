@@ -6,7 +6,7 @@
 // Author: Luca Valcavi - luca at valcavi com
 //////////////////////////////////////////////
 #include "MorseMunication.h"
-//
+// modificato
 uint8_t G_BANKofSIGNS[36]={
   two   | 0b00000001,    //A .-   two signs
   four  | 0b00001000,    //B -... four signs
