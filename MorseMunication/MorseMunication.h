@@ -48,8 +48,6 @@ private:
   void keyReleasedRoutine();
   void keyPressedRoutine();
   void setMflag(uint8_t mask);
-	void txKeyUpFrequency();
-  void txKeyDownFrequency();
 	void sendChar(char letterToTransmit);
   //
   // end class
