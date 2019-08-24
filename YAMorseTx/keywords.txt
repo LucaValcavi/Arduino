@@ -1,0 +1,19 @@
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+YAMorseTx 		KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+mm_setup 		KEYWORD2
+mm_send 		KEYWORD2
+mm_txKeyUp 		KEYWORD2
+mm_txKeyDown 		KEYWORD2
+mm_txNoTones 		KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################

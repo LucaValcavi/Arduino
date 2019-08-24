@@ -1,0 +1,20 @@
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+YAMorseRx 		KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+mm_setup 		KEYWORD2
+mm_checkRxPinStatus 		KEYWORD2
+mm_interruptFromRxPin 		KEYWORD2
+mm_refresh 		KEYWORD2
+mm_have_message 		KEYWORD2
+mm_get_message 		KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
