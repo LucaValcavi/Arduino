@@ -1,3 +1,7 @@
+// Author: Luca Valcavi (luca at valcavi dot com)
+// Copyright (C) 2019 Luca Valcavi
+// YAMorseRx.h
+
 #ifndef YAMorseRx_h
 #define YAMorseRx_h
 //

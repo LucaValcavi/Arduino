@@ -1,3 +1,7 @@
+// Author: Luca Valcavi (luca at valcavi dot com)
+// Copyright (C) 2019 Luca Valcavi
+// YAMorseRx.cpp
+
 #include "YAMorseRx.h"
 uint8_t _thebuffer[] = {0,0,0,0,0,0,0,0};
 // public subs
