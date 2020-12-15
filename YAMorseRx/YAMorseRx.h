@@ -46,6 +46,7 @@ class YAMorseRx{
 		void    mm_refresh();
 		uint8_t mm_have_message();
 		void    mm_get_message(uint8_t* buf, uint8_t* len);
+		void    mm_decode_to_numbers(uint8_t* buf, uint8_t len);
 	private:
 		uint8_t _bank_of_signs[36]={
 		two   | 0b00000001,    //A .-   two signs
@@ -99,6 +100,7 @@ class YAMorseRx{
 		uint8_t _no_modulation = false;
 		uint8_t _pinRx = 3; // necessary only for no-carrier
 		uint8_t _VirtualKeyStatus = UNDEFINED;
+		uint8_t _CarrierDetected = false;
 		//
 		uint16_t _counterReleased = 65535;
 		uint16_t _counterPushed = 0;

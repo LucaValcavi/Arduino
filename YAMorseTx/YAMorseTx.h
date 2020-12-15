@@ -34,6 +34,8 @@ public:
 	void    mm_txKeyUp();
 	void    mm_txKeyDown();
 	void    mm_txNoTones();
+	void    mm_numericOn();
+	void    mm_numericOff();
 
 private:
 	uint8_t _bank_of_signs[36]={
@@ -91,6 +93,8 @@ private:
 	uint16_t _modulation_key_down = 3000; // hz
 	//
 	uint8_t _no_modulation = false;
+	//
+	uint8_t _numeric_on = false;
 	// subroutines
 	morseSigns signs_from_character(char character);
 	morseSigns compose_prosigns(uint8_t* chars, uint8_t len);

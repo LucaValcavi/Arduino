@@ -14,6 +14,7 @@ mm_interruptFromRxPin 		KEYWORD2
 mm_refresh 		KEYWORD2
 mm_have_message 		KEYWORD2
 mm_get_message 		KEYWORD2
+mm_decode_to_numbers 		KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

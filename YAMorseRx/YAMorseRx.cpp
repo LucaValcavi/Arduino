@@ -76,6 +76,7 @@ void YAMorseRx::mm_interruptFromRxPin(){// interrupt (bitonal modulation)
 	  unsigned long diff;
 	  static uint8_t counterKeyDownFreq;
 	  static uint8_t counterKeyUpFreq;
+		static uint8_t counterNoCarrier;
 		//
 	  diff = micros() - prevMicros;
 	  prevMicros = micros();
@@ -84,8 +85,10 @@ void YAMorseRx::mm_interruptFromRxPin(){// interrupt (bitonal modulation)
 	    // detect key up frequency
 	    counterKeyDownFreq += 1;
 	    if (counterKeyDownFreq > 5){ // minimum 6 consecutive periods
+				_CarrierDetected = true;
 	      counterKeyDownFreq = 6;
 	      counterKeyUpFreq = 0;
+				counterNoCarrier = 0;
 		    _VirtualKeyStatus = PUSHED;
 	    }
 	  } else {
@@ -93,11 +96,21 @@ void YAMorseRx::mm_interruptFromRxPin(){// interrupt (bitonal modulation)
 	      // detect key down frequency
 	      counterKeyUpFreq += 1;
 	      if (counterKeyUpFreq > 5){ //minimum 6 consecutive periods
+					_CarrierDetected = true;
 	        counterKeyDownFreq = 0;
+					counterNoCarrier = 0;
 	        counterKeyUpFreq = 6;
 	        _VirtualKeyStatus = RELEASED;
 	      }
-	  	} // else the UNDEFINED (set from getNews)
+	  	} else {
+				counterNoCarrier += 1;
+				if (counterNoCarrier > 10){
+					counterNoCarrier = 11;
+					counterKeyDownFreq = 0;
+					counterKeyUpFreq = 0;
+					_CarrierDetected = false;
+				}
+			}
 	  }
 	}
 }
@@ -124,12 +137,62 @@ void YAMorseRx::mm_refresh(){// is it time to read the VirtualKeyStatus?
   }
 }
 uint8_t YAMorseRx::mm_have_message(){
-	if (_havemessage){
-		_havemessage = false;
-		_VirtualKeyStatus = UNDEFINED; //none frequency is detected
-		return true;
+	if (_CarrierDetected) {
+		if (_havemessage){
+			_havemessage = false;
+			_VirtualKeyStatus = UNDEFINED; //none frequency is detected
+			return true;
+		} else {
+			return false;
+		}
 	} else {
 		return false;
+	}
+}
+void YAMorseRx::mm_decode_to_numbers(uint8_t* buffer, uint8_t len){
+
+	for (uint8_t n = 0; n < len; n++){
+		if (char(buffer[n]=='E')){
+			buffer[n] = '0';
+		}	else {
+			if (char(buffer[n]=='T')){
+				buffer[n] = '1';
+			}	else {
+				if (char(buffer[n]=='I')){
+					buffer[n] = '2';
+				}	else {
+					if (char(buffer[n]=='A')){
+						buffer[n] = '3';
+					}	else {
+						if (char(buffer[n]=='N')){
+							buffer[n] = '4';
+						}	else {
+							if (char(buffer[n]=='S')){
+								buffer[n] = '5';
+							}	else {
+								if (char(buffer[n]=='D')){
+									buffer[n] = '6';
+								}	else {
+									if (char(buffer[n]=='R')){
+										buffer[n] = '7';
+									}	else {
+										if (char(buffer[n]=='U')){
+											buffer[n] = '8';
+										}	else {
+											if (char(buffer[n]=='H')){
+												buffer[n] = '9';
+											}	else {
+												//
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
 void YAMorseRx::mm_get_message(uint8_t* buf, uint8_t* len){

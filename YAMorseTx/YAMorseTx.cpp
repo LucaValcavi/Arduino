@@ -53,9 +53,60 @@ void YAMorseTx::mm_txNoTones(){
 		digitalWrite(_pinTx,HIGH);
 	}
 }
+void YAMorseTx::mm_numericOn(){
+	_numeric_on = true;
+}
+void YAMorseTx::mm_numericOff(){
+	_numeric_on = false;
+}
 uint8_t YAMorseTx::mm_send(uint8_t* buffer, uint8_t len){
 	delay(_pauseBetwSignsTX);
 	for (uint8_t n = 0; n < len; n++){
+		////////////////////////////////////////
+		if (_numeric_on){
+			if (char(buffer[n]=='0')){
+				buffer[n] = 'E';
+			}	else {
+				if (char(buffer[n]=='1')){
+					buffer[n] = 'T';
+				}	else {
+					if (char(buffer[n]=='2')){
+						buffer[n] = 'I';
+					}	else {
+						if (char(buffer[n]=='3')){
+							buffer[n] = 'A';
+						}	else {
+							if (char(buffer[n]=='4')){
+								buffer[n] = 'N';
+							}	else {
+								if (char(buffer[n]=='5')){
+									buffer[n] = 'S';
+								}	else {
+									if (char(buffer[n]=='6')){
+										buffer[n] = 'D';
+									}	else {
+										if (char(buffer[n]=='7')){
+											buffer[n] = 'R';
+										}	else {
+											if (char(buffer[n]=='8')){
+												buffer[n] = 'U';
+											}	else {
+												if (char(buffer[n]=='9')){
+													buffer[n] = 'H';
+												}	else {
+													//
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		////////////////////////////////////////
 		if (char(buffer[n]==' ')){ // pause as long as 1 dash
 			mm_txKeyUp();
 			delay(_pauseBetwWordsTX);

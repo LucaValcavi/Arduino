@@ -13,6 +13,8 @@ mm_send 		KEYWORD2
 mm_txKeyUp 		KEYWORD2
 mm_txKeyDown 		KEYWORD2
 mm_txNoTones 		KEYWORD2
+mm_numericOn 		KEYWORD2
+mm_numericOff 		KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
